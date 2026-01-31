@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f2efe9;
+  font-family: Georgia, serif;
+}
+
+.book {
+  width: 420px;
+  height: 560px;
+  position: relative;
+  perspective: 2500px;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #fffdf7;
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  transform-origin: left;
+  transition: transform 1s;
+  backface-visibility: hidden;
+}
+
+/* PAPER LINES */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 26px,
+    rgba(0,0,0,0.04) 27px
+  );
+  pointer-events: none;
+}
+
+/* COVER PAGE */
+.cover {
+  background: #f7efe5;
+  text-align: center;
+}
+
+.cover img {
+  width: 100%;
+  height: 65%;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.page:nth-child(1) { z-index: 3; }
+.page:nth-child(2) { z-index: 2; }
+.page:nth-child(3) { z-index: 1; }
+
+.page.flipped {
+  transform: rotateY(-180deg);
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 25px;
+  background: #c4a484;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #a8896d;
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
